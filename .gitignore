@@ -1,0 +1,19 @@
+# Flutter/Dart build files
+build/
+# iOS related files
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+# Android related files
+.android/
+# Pub package artifacts
+.pub-cache/
+# Flutter generated files
+flutter_build/
+# Miscellaneous IDE files
+*.iml
+.idea/
+*.swp
+*.swo
+*~
+# VS Code settings
+.vscode/
