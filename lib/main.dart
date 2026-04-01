@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'screens/joke_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,12 +8,50 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shopping List',
+      title: 'HouseList',
       theme: ThemeData(
         primarySwatch: Colors.amber,
         accentColor: Colors.orange,
       ),
-      home: ShoppingListScreen(),
+      home: MainNavigation(),
+    );
+  }
+}
+
+class MainNavigation extends StatefulWidget {
+  @override
+  _MainNavigationState createState() => _MainNavigationState();
+}
+
+class _MainNavigationState extends State<MainNavigation> {
+  int _selectedIndex = 0;
+  final List<Widget> _screens = [
+    ShoppingListScreen(),
+    JokeScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _screens[_selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Shopping List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.emoji_emotions),
+            label: 'Joke Generator',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+      ),
     );
   }
 }
